@@ -1,49 +1,28 @@
-# nvim-lua-plugin-template
+# telescope-projectionist.nvim
+`telescope-projectionist.nvim` is an extension for telescope that works with `tpope/vim-projectionist` plugin.
+It will list all the types, once selected will return the files of that type. If the file does not exists
+using the Keymap `<C-y>` will create the file with the provided name
+This plugin is in an `alpha` state, a lot of improvements can be done.
 
-This repository is a template for Neovim plugins written in Lua.
-
-The intention is that you use this template to create a new repository where you then adapt this readme and add your plugin code.
-The template includes the following:
-
-- GitHub workflows to run linters and tests
-- Minimal test setup
-- EditorConfig
-- A .luacheckrc
-
-
-To get started writing a Lua plugin, I recommend reading the [nvim-lua-guide][nvim-lua-guide].
-
-## Scope
-
-Anything that the majority of plugin authors will want to have is in scope of
-this starter template. Anything that is controversial is out-of-scope.
-
----
-
-
-The remainder of the README is text that can be preserved in your plugin:
-
----
-
-
-## Development
-
-### Run tests
-
-
-Running tests requires [plenary.nvim][plenary] to be checked out in the parent directory of *this* repository.
-You can then run:
-
-```bash
-nvim --headless --noplugin -u tests/minimal.vim -c "PlenaryBustedDirectory tests/ {minimal_init = 'tests/minimal.vim'}"
+# Install
+using plugin manager as packer
+```
+use adalessa/telescope-projectionist.nvim
 ```
 
-Or if you want to run a single test file:
-
-```bash
-nvim --headless --noplugin -u tests/minimal.vim -c "PlenaryBustedDirectory tests/path_to_file.lua {minimal_init = 'tests/minimal.vim'}"
+# Config
+After the setup of telescope add this into the lua file
+```
+require("telescope").load_extension "projectionist"
 ```
 
+Invoke using `:Telescope projectionist`
 
-[nvim-lua-guide]: https://github.com/nanotee/nvim-lua-guide
-[plenary]: https://github.com/nvim-lua/plenary.nvim
+Adding a keybinding use
+
+```
+nnoremap <leader>fp :Telescope projectionist<CR>
+```
+
+# Contributing
+All contributions are appreciated, just be nice.
