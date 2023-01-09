@@ -22,11 +22,19 @@ local function getPaths(type)
     return getNavCmds()[type]
 end
 
+local function get_default(x, default)
+  if x == nil then
+    return default
+  else
+    return x
+  end
+end
+
 local projectionist = function (opts)
     opts = opts or {}
-    opts.path_display = utils.get_default(opts.path_display, "hidden")
-    opts.ignore_filename = utils.get_default(opts.ignore_filename, true)
-    opts.include_extensions = utils.get_default(opts.include_extensions, false)
+    opts.path_display = get_default(opts.path_display, "hidden")
+    opts.ignore_filename = get_default(opts.ignore_filename, true)
+    opts.include_extensions = get_default(opts.include_extensions, false)
 
     local results = {}
 
@@ -84,9 +92,9 @@ end
 
 M.findByType = function(type, opts)
     opts = opts or {}
-    opts.path_display = utils.get_default(opts.path_display, "hidden")
-    opts.ignore_filename = utils.get_default(opts.ignore_filename, true)
-    opts.include_extensions = utils.get_default(opts.include_extensions, false)
+    opts.path_display = get_default(opts.path_display, "hidden")
+    opts.ignore_filename = get_default(opts.ignore_filename, true)
+    opts.include_extensions = get_default(opts.include_extensions, false)
 
     local paths = getPaths(type)
     local results = {}
